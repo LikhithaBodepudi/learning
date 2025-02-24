@@ -1,0 +1,13 @@
+Junit- Maven Peoject  group id arificat id 
+pom.xml->dependencies/properties/plugins
+main -java class 
+test file :JUnit creates a single instance of the test class for all the tests in that class. Annotations in it:  @BeforeAll , @BeforeEach, @Test, @AfterEach 
+@BeforeAll - executes only once before anything else in Junit test class before even calling object of test class so it should be static  like static void anyname(){};,
+@BeforeEach - it executes before each test so the for class u want to get,give the object declaration before @Test and assignment in this & other things yyou want to do , 
+@Test :assertEquals,assertTrue,assertFalse,AssertArrayEquals,assertTimeout- used for performance evaluation,
+@AfterEach - executes after every @Test
+@AfterAll - executes only once after anything else in Junit test class  it should be static  like static void anyname(){};,
+@AfterAll method does not have access to instance variables of the test class because it is static. This is appropriate since the method is meant to perform cleanup or finalization tasks that do not depend on the state of a specific instance of the test class.
+New instance of the test class is created for each test method. This means that instance variables are not shared between tests. to avoid these before test class(not before annotation test) we need to give annotation @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+When you specify @TestInstance(TestInstance.Lifecycle.PER_CLASS), JUnit will create a single instance of the test class for all test methods. This allows you to use instance variables and methods without needing to declare them as static.
+even @BeforeAll ,@AfterAll doesn't need static declaration anymore if we use  @TestInstance(TestInstance.Lifecycle.PER_CLASS)
