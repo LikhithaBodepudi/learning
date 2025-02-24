@@ -11,3 +11,52 @@ test file :JUnit creates a single instance of the test class for all the tests i
 New instance of the test class is created for each test method. This means that instance variables are not shared between tests. to avoid these before test class(not before annotation test) we need to give annotation @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 When you specify @TestInstance(TestInstance.Lifecycle.PER_CLASS), JUnit will create a single instance of the test class for all test methods. This allows you to use instance variables and methods without needing to declare them as static.
 even @BeforeAll ,@AfterAll doesn't need static declaration anymore if we use  @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+
+example of a teat class :
+
+import org.junit.jupiter.api.*;
+
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+public class MyTests {
+
+    private int counter;
+
+    @BeforeAll
+    void setup() {
+        // This method can be non-static
+        counter = 0;
+        System.out.println("Setup: Counter initialized to " + counter);
+    }
+
+    @BeforeEach
+    void init() {
+        // This method runs before each test
+        System.out.println("Before Each Test: Counter = " + counter);
+    }
+
+    @Test
+    void testIncrement() {
+        counter++;
+        Assertions.assertEquals(1, counter);
+        System.out.println("Test Increment: Counter = " + counter);
+    }
+
+    @Test
+    void testDecrement() {
+        counter--;
+        Assertions.assertEquals(-1, counter);
+        System.out.println("Test Decrement: Counter = " + counter);
+    }
+
+    @AfterEach
+    void cleanup() {
+        // This method runs after each test
+        System.out.println("After Each Test: Counter = " + counter);
+    }
+
+    @AfterAll
+    void tearDown() {
+        // This method can be non-static
+        System.out.println("Tear Down: Final Counter Value = " + counter);
+    }
+}
