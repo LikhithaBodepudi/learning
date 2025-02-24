@@ -1,10 +1,34 @@
 Junit- Maven Peoject  group id arificat id 
 pom.xml->dependencies/properties/plugins
+To use JUnit in a Maven project, add the following dependencies to your pom.xml:
+
+<properties>
+    <junit.jupiter.version>5.8.1</junit.jupiter.version>
+</properties>
+<dependencies>
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>${junit.jupiter.version}</version>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.22.2</version>
+        </plugin>
+    </plugins>
+</build>
+
+
 main -java class 
 test file :JUnit creates a single instance of the test class for all the tests in that class. Annotations in it:  @BeforeAll , @BeforeEach, @Test, @AfterEach 
 @BeforeAll - executes only once before anything else in Junit test class before even calling object of test class so it should be static  like static void anyname(){};,
 @BeforeEach - it executes before each test so the for class u want to get,give the object declaration before @Test and assignment in this & other things yyou want to do , 
-@Test :assertEquals,assertTrue,assertFalse,AssertArrayEquals,assertTimeout- used for performance evaluation,
+@Test :assertEquals : assertEquals(expected, actual): Checks if two values are equal. ,assertTrue,assertFalse,AssertArrayEquals : assertArrayEquals(expectedArray, actualArray): Checks if two arrays are equal.,assertTimeout : assertTimeout(duration, executable)- used for performance evaluation,assertThrows(expectedType, executable): Asserts that a specific exception is thrown.
 @AfterEach - executes after every @Test
 @AfterAll - executes only once after anything else in Junit test class  it should be static  like static void anyname(){};,
 @AfterAll method does not have access to instance variables of the test class because it is static. This is appropriate since the method is meant to perform cleanup or finalization tasks that do not depend on the state of a specific instance of the test class.
@@ -60,3 +84,5 @@ public class MyTests {
         System.out.println("Tear Down: Final Counter Value = " + counter);
     }
 }
+
+for more info on junit : https://junit.org/junit5/docs/current/user-guide/
