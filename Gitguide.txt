@@ -69,3 +69,26 @@ git rm --cached <file>  # Remove from staging only
 
 # Move/rename files
 git mv <old-path> <new-path>
+
+Viewing Changes:
+
+# Show changes between working directory and staging
+git diff
+# Show changes between staging and last commit
+git diff --staged
+# Show changes in a specific file
+git diff <file>
+
+# Show changes between commits
+git diff <commit1> <commit2>
+
+# Show commit history
+git log
+git log --oneline  # Compact view
+git log --graph  # Show branch structure
+git log -p  # Show patches
+git log --author="name"  # Filter by author
+git log --since="2 weeks ago"  # Filter by date
+
+# Show a specific commit
+git show <commit-hash>
