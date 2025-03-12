@@ -1,3 +1,71 @@
 Distributed version control system
 Tracks changes to files over time
 Allows multiple people to collaborate on projects
+ For Windows
+# Download from https://git-scm.com/download/win
+
+i am commenting text with #here they are not Commands
+
+# Configure your identity
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+
+# Set default editor
+git config --global core.editor "vim"  # or nano, code, etc.
+
+# View configurations
+git config --list
+
+CORE GIT CONCEPTS 
+Repository (Repo) :
+A directory where Git tracks changes
+Contains all project files and the entire history
+
+Three States of Git :
+Working Directory: Where you edit files
+Staging Area (Index): Where you prepare changes for a commit
+Repository: Where committed changes are stored
+
+Basic Workflow :
+Modify files in the working directory
+Stage changes you want to commit
+Commit changes to create a permanent snapshot
+
+Essential Git Commands
+
+Creating Repositories : 
+
+# Initialize a new repository by default it is master
+git init
+# if you want to change name, before initializing give command
+git init -b main(# main is the name i have given)
+# clone an existing repository
+git clone <repository-url>
+This command clones the repository located at <repository-url> into a new directory on your local machine. The new directory will have the same name as the repository by default. This command copies all the files, branches, and commit history from the remote repository to your local machine.
+git clone <repository-url> <directory-name>  # Clone to specific directory
+This command allows you to specify a custom directory name (<directory-name>) where the repository will be cloned. Instead of using the default name of the repository, you can choose any name you prefer for the local directory
+git clone --depth=1 <repository-url>  # Shallow clone (limited history) fetching only the latest commit, which is faster and uses less space.
+
+Basic Snapshotting :
+# Check status of working directory
+git status # displays Current Branch,Tracking Information,Staged Changes,Unstaged Changes,Untracked Files
+git status -s  # Short format  Provides a concise output with a two-character prefix for each file, indicating its status in the staging area and working directory.
+
+# Add files to staging area
+git add <file> # Stages a specific file for the next commit.
+git add .  # Stages all changes in the current directory and subdirectories (excluding deletions).
+git add -A  # Add all changes including deletions
+git add -p  # Stages changes interactively, allowing you to choose which changes to stage.
+
+# Commit staged changes
+git commit -m "Commit message"
+git commit  # Opens editor for commit message
+git commit -a -m "message"  # Add all tracked files and commit
+git commit --amend  # Modify the last commit
+
+# Remove files
+git rm <file>  # Remove from working directory and staging
+git rm --cached <file>  # Remove from staging only
+
+# Move/rename files
+git mv <old-path> <new-path>
