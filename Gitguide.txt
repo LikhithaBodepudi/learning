@@ -92,3 +92,26 @@ git log --since="2 weeks ago"  # Filter by date
 
 # Show a specific commit
 git show <commit-hash>
+
+Undoing Changes:
+
+# Discard changes in working directory
+git checkout -- <file>
+git restore <file>  # Git 2.23+
+
+# Unstage changes
+git reset HEAD <file>
+git restore --staged <file>  # Git 2.23+
+
+# Reset to a previous commit
+git reset --soft <commit>  # Keep changes staged
+git reset --mixed <commit>  # Keep changes unstaged (default)
+git reset --hard <commit>  # Discard all changes (dangerous)
+
+# Revert a commit (creates new commit)
+git revert <commit>
+
+# Remove untracked files
+git clean -f  # Remove files
+git clean -fd  # Remove files and directories
+git clean -n  # Dry run (show what would be removed)
